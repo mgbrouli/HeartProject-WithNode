@@ -1,0 +1,21 @@
+{
+  "name": "heart-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "espress": "^0.0.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.0",
+    "mysql": "^2.18.1",
+    "spress": "^0.1.2"
+  }
+}

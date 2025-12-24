@@ -1,0 +1,378 @@
+:root{
+    --cor-container: rgb(74, 165, 226);
+    --nav-container: rgb(146, 173, 177);
+    --placeholder: rgb(56, 56, 56);
+    --transparent : rgba(0, 0, 0, 0.772);
+    --navigation: rgb(3, 3, 52);
+}
+
+@media screen {
+    body{
+        overflow-y: scroll;
+
+    }
+    footer{
+        position: absolute;  
+        bottom: 5px;
+    }
+}
+
+* {padding: 0; margin: 0; box-sizing: border-box;}
+body{background-color: rgb(1, 1, 50);}
+
+.clear{clear:both}
+.container{
+    width: 85%;
+    height: 470px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.instrucao{
+    background-color: var(--cor-container);
+    width: 60%;
+    height: 80%;
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.login{
+    background-color: var(--cor-container);
+    width: 40%;
+    height: 80%;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+}
+form{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.login input{
+    width: 70%;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    margin: 6px;
+    margin-bottom: 10px;
+    padding: 1px;
+    font-size: 17px;
+    background-color: var(--cor-container);
+    border-bottom: 2px solid darkgray;
+    outline: none;
+}
+.login input:focus{
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 6px;
+    
+
+}
+
+.login button{
+    width: 50%;
+    height: 40px;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+    background-color: rgb(121, 89, 176);
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    margin: 10px;
+
+}
+.login button:hover{
+    cursor: pointer;
+    background-color: rgb(0, 170, 255);
+}
+.login button:active{
+    background-color: lightpink;
+    color: black;
+}
+footer{
+    background-color: var(--cor-container);
+    border-radius: 10px;
+    padding: 1px;
+    
+    
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    
+}
+
+/**************Cadastro Simples**********************/
+legend{
+    color: white;
+    font-size: 30px;
+    margin: 0 auto;
+    
+}
+.tipo{
+    width: 60%;
+    height: 40px;
+    padding: 3px;
+    margin: 2px;
+    border-radius: 4px;
+    
+}   
+.container .form_cad{
+    height: 100%;
+    width: 80%;
+}
+.cadastro{
+    height: 500px;
+    width: 70%;
+    display: flex;
+    margin: 5px;
+}
+#data{ width: 180px;height: 30px;padding: 5px; margin: 4px;}
+
+
+/********************Homer Personal***********************/
+header{
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid gray;
+}
+nav{
+    width: 100%;
+    height: 100%;
+    background-color:  var(--havigation);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.img_logo{
+    width:200px;
+    height: 40px;
+    background-color: var(--placeholder);
+    margin-left: 15px;
+}
+.container_flags{
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.flag{
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    margin-left: 4px;
+    border-radius: 15px;
+    background-color: rgb(2, 0, 28);
+}
+/**Alterar por programação*/
+.red_flag{background-color: rgb(88, 2, 2);}
+.yellow_flag{background-color: rgb(144, 144, 3);}
+.green_flag{background-color: rgb(2, 87, 2);}
+
+
+.config_btn{
+    width: 40px;
+    height: 100%;
+    font-size: 30px;
+    margin-left: 70px   ;
+}
+
+.config_btn button{
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+/*************nav left container***************/
+
+aside{
+    width: 250px;
+    height: 55  0px;
+    margin: 13px;
+    border-right: 4px solid rgba(0,0,0,0.5);
+    float: left;
+    
+}
+.left_side{
+    width: 100%;
+    height: 100%;
+    background-color: var(--nav-container);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start ;
+    
+}
+
+.container_personal_info{
+    height: 45%;
+    width: 100%;
+    border-bottom: 2px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between  ;
+
+}
+.foto{
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-color:var(--placeholder);
+
+}
+.username{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    color: rgb(53, 53, 53);
+    font-style: italic;
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.list_navigation{
+    width: 100%;
+    height: 55%;
+    padding: 10px;
+    background-color: var(--nav-container);
+
+}
+.list_navigation  ul{
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+.list_navigation ul li{
+    width: 100%;
+    height:45px;
+    background-color: var(--nav-container);
+    border-bottom: 2px solid var(--transparent);
+    padding-left: 15px;
+}
+
+.list_navigation ul li a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    font-weight: bold;
+    color: darkslategray;
+}
+.list_navigation ul li a:hover, .list_navigation ul li:hover {
+    cursor: pointer;
+    background-color: var(--transparent);
+    font-style: italic;
+    color: white;
+
+}
+
+/**************Container central da pagina***************/
+
+.container_central{
+    width: 980px;
+    height: 100%;
+    background-color: var(--cor-container);
+    margin-left: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin-top: 15px;
+    border-top-right-radius: 15vb;
+}
+.container_port{
+    width: 95%;
+    height: 250px;
+    background-color: var(--navigation);
+    border-top-right-radius: 10vh;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: row;    
+    overflow: scroll ;
+    align-items: center;
+    border: 3px dashed var(--transparent);
+
+}
+.container_port .lojas{
+    width: 158px;
+    min-width: 157px;
+    min-height: 216px;
+    height: 216px;
+    background-color: wheat;
+    margin: 0 20px;
+    border-top-right-radius: 7vb;
+    border-bottom-left-radius: 20px;    
+   
+}
+
+/***************POST CONTAINER **************/
+
+.container_posts{
+    width: 85%;
+    height: 500px;
+    padding: 20px;
+    border: 3px solid var(--transparent);
+    background-color: lightgray;
+    margin: 20px;
+    overflow: auto;
+
+}
+.post_elements{
+    width: 90%;
+    height: 90px;
+    min-height: 89px;
+    background-color: rgb(225, 225, 225);
+    display: flex;
+    margin: 20px;
+    padding: 5px;
+
+}
+.post_foto{
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    min-height: 80px;
+    background-color: black;
+    border-radius: 40px;
+    margin: 3px;
+}
+.post_conteudo{
+    font-size: 12px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+    padding: 3px;
+}
+.post_perfil{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: inherit;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEART | Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form_cad" action="/cadastro" method="post">
+            <fieldset class="login cadastro">
+                <legend>Cadastro</legend>
+                <label for="nome">Nome: 
+                    <input type="text" name="nome" id="nome">
+                </label>
+                
+                <label for="email">Email: 
+                    <input type="email" name="email" id="email">
+                </label>
+                
+                <select class="tipo" name="tipo" id="tipo">
+                    <option value="none" selected>Escolha um tipo de conta</option>
+                    <option value="pessoal">Pessoal</option>
+                    <option value="empresa">Empresarial</option>
+                </select>
+                <label for="nascimento">Data de Nascimento:
+                    <input type="date" name="data" id="data">
+                </label>
+                <label for="pass">Senha:
+                    <input type="password" name="pass" id="pass">
+
+                </label>
+                <label for="pass2">Repita a senha:
+                    <input type="password" name="pass2" id="pass2">
+                </label>
+
+                <button type="submit">Salvar</button>
+                <button type="button" id="cancela" >Cancelar</button>
+                
+            </fieldset>
+        </form>
+    </div><!--container-->
+    
+</body>
+</html>
