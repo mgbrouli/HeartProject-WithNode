@@ -1,7 +1,9 @@
 import express from 'express';
+import type { Request, Response } from 'express';
+
 import path from 'path';
 const __dirname = import.meta.dirname;
-
+import { userRouter } from './app/auth/user.routers.js';
 
 //const db = require("./db")
 
@@ -13,6 +15,7 @@ app.set('views', __dirname + '/views')
 app.use(express.static('src/views'))
 app.use(express.urlencoded({extended:true}))
 
+app.use('/api', userRouter)
 
 
 //Routes
@@ -23,9 +26,10 @@ app.get('/', (req, res)=>{
   
 })
 
-app.get('/cadastro', (req, res)=>{
+app.get('/cadastro', (req: Request, res: Response)=>{
     res.render('cadastro')
 })
+
 app.get('/home_personal', (req, res)=>{
     res.render('home-page-personal')
 })
