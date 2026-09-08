@@ -26,12 +26,12 @@ app.use('/', homeRouter)
 //Routes of rendering pages
 
 app.get('/', (req, res)=>{
-    res.status(200).render('login')
+    res.status(200).render('auth/login')
      
 })
 
 app.get('/cadastro', (req: Request, res: Response)=>{
-    res.render('cadastro')
+    res.render('auth/cadastro')
 })
 
 
