@@ -16,23 +16,27 @@ declare global {
 
 
 export const authMiddleWare = (req: Request, res: Response, next: NextFunction) => {
-    const authHeader = req.headers.authorization;
+    let token: string | undefined;
 
-    if(!authHeader || !authHeader.startsWith('Bearer ')){
-        return res.status(StatusCodes.UNAUTHORIZED).json({message: "Token não fornecido ou invalido"})
+    if (req.cookies && req.cookies.token) {
+        token = req.cookies.token;
     }
+    else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+        const [, headerToken] = req.headers.authorization.split(' ')
+        token = headerToken;
 
-    const [ ,token] = authHeader.split(' ');
-    if(!token){
-        return res.status(StatusCodes.UNAUTHORIZED).json({message: "Token malformado"});
     }
-    try{
-        const payload = verifyToken(token) as {userId: number, email: string};
+   
+    if (!token) {
+        return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Token não fornecido ou inválido" });
+    }
+    try {
+        const payload = verifyToken(token) as { userId: number, email: string };
         req.user = payload;
         next();
-    }catch(error){
+    } catch (error) {
         console.error(error);
-        return res.status(StatusCodes.UNAUTHORIZED).json({message: "Token invalido ou expirado"})
+        return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Token invalido ou expirado" })
     }
 
 
