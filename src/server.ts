@@ -4,6 +4,7 @@ import type { Request, Response } from 'express';
 import path from 'path';
 const __dirname = import.meta.dirname;
 import { userRouter } from './app/auth/user.routers.js';
+import { authMiddleWare } from './core/utilities/jwtMiddleware.js'
 
 //const db = require("./db")
 
@@ -29,7 +30,7 @@ app.get('/cadastro', (req: Request, res: Response)=>{
     res.render('cadastro')
 })
 
-app.get('/home_personal', (req, res)=>{
+app.get('/home_personal', authMiddleWare , (req, res)=>{
     res.render('home-page-personal')
 })
 
