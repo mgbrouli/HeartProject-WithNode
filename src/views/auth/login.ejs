@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-be">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HEART | login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-950">
+    <div class="w-[90%] min-h-200 flex m-auto justify-center items-center">
+        <div
+            class="font-sans text-center flex flex-1 justify-center m-1 h-75 w-1/2 bg-cyan-400 p-2.5 rounded-tl-2xl items-center border-b border-b-gray-300">
+            <p>Bem vindo ao HEART, leia o termo de Uso para se manter dentro
+                das regras, <br>cada vacilo tem um aviso porém, cada acerto tem seus
+                beneficios,<br> aproveita para divulgar e ter mais oportunidades na vida.
+                <br /> Seu futuro é você quem faz.
+                <br /><a href="#">Termos de Uso</a>
+                <br /> <a href="#">Contrato de Uso</a>
+            </p>
+
+
+        </div><!--instrucao-->
+        <div class="w-[40%] h-75 flex flex-col bg-cyan-400 ml-2 justify-center items-center rounded-tr-2xl p-2.5 border-b border-b-gray-300 space-y-3 
+        
+            ">
+            <form class="w-full min-h-[70%] flex flex-col justify-center items-center" action="/api/login" method="post">
+                <input class="w-10/12 border rounded-tl-2xl rounded-tr-2xl focus:bg-zinc-100 bg-zinc-400 p-2"
+                    placeholder="Email: " type="text" name="email" id="login">
+                <input class="w-10/12 border outline-0 rounded-bl-2xl bg-zinc-400 rounded-br-2xl focus:bg-zinc-100 p-2"
+                    type="password" placeholder="Senha: " name="senha" id="pass">
+                <button
+                    class="w-10/12 p-2 rounded-2xl  font-sans text-white text-shadow-black text-2xl outline-0 border-0 m-2.5 bg-purple-500 cursor-pointer hover:bg-cyan-500 hover:text-zinc-500 shadow-emerald-800 shadow-2xl active:bg-pink-400 active:text-black "
+                    type="submit">Entrar!</button>
+
+
+            </form>
+            <div class="w-10/12 flex flex-row justify-between h-6 text-indigo-500 italic text-1xl">
+                <a class="" href="#">Esqueci a senha</a>
+                <p class="text-center">Ainda não é membro?<a class="text-purple-700 cursor:poiter hover:text-blue-900"
+                        href="/cadastro">Entrar já</a>
+                </p>
+            </div>
+
+        </div><!--login-->
+
+        <footer class="bg-cyan-400 w-[90%] h-8 text-center p-1 rounded-bl-2xl rounded-br-2xl absolute top-[73%] shadow-lg shadow-purple-600 border border-t-gray-300">
+            &copy; 2026 Direitos reservados Magnum Brouli
+        </footer>
+    </div><!--container-->
+</body>
+
+</html>

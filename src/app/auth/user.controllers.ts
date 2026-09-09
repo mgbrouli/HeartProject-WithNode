@@ -1,6 +1,5 @@
 import type { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { userTable } from "./user.schema.js";
 import { UserServices } from "./user.services.js";
 import { AppError } from "../../core/error/AppError.js";
 
@@ -41,7 +40,7 @@ export class UserController {
                 maxAge: EIGHT_HOURS_IN_MS
             })
             
-            res.status(StatusCodes.PERMANENT_REDIRECT).redirect('/home_personal')
+            res.status(StatusCodes.PERMANENT_REDIRECT).redirect('/home')
 
         }catch(error: any){
             if(error instanceof AppError){
@@ -50,4 +49,6 @@ export class UserController {
             return res.status(StatusCodes.UNAUTHORIZED).json({message: "Erro interno do servidor"})
         }
     }
+
+    
 }
