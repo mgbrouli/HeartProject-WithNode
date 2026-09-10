@@ -45,6 +45,7 @@ export class HomeControllers {
             return res.render('home-page-personal', { user: userData, posts: postComReacao })
 
         } catch (error) {
+            console.error("Erro no home: "+ error)
             return res.redirect('/')
         }
 

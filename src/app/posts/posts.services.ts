@@ -76,8 +76,8 @@ export class PostsServices {
     }
 
     getReactionsByUserId = async (userId: number): Promise<Array<{ id: string; postId: string; userId: number; type: string }>> => {
-        const [result] = await db.select().from(postReactionTable).where(eq(postReactionTable.userId, userId))
-        return (result ?? []) as Array<{ id: string; postId: string; userId: number; type: string }>;
+        const result = await db.select().from(postReactionTable).where(eq(postReactionTable.userId, userId))
+        return result
     }
 
 
