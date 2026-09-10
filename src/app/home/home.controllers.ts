@@ -2,9 +2,11 @@ import type { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 //import { userTable } from "../auth/user.schema.js";
 import { HomeServices } from "./home.services.js";
+import { PostsServices } from "../posts/posts.services.js";
 //import { AppError } from "../../core/error/AppError.js";
 
-const homeService = new HomeServices()
+const homeService = new HomeServices();
+const postService = new PostsServices();
 
 export class HomeControllers{
 
@@ -12,22 +14,30 @@ export class HomeControllers{
     getHome = async (req: Request, res: Response) =>{
         try{
             const userId = Number(req.user?.userId);
-            if(!userId){
+            if(!userId || Number.isNaN(userId)){
                 return res.redirect("/")
             }
 
             //OBS: Aqui a baixo fazer o retorno dos posts para jogar no redirect
             //Jogar em formato de Json apos o redirect de posts e coisa afins
             const userData = await homeService.findUserById(userId);
+
             if(!userData){
                 res.clearCookie('token');
                 return res.redirect('/');
             }
 
-            return res.render('home-page-personal', {user: userData})
+            const posts = await postService.getAllPost();
+
+            if(!userData){
+                res.clearCookie('token');
+                return res.redirect('/');
+            }
+
+            return res.render('home-page-personal', {user: userData, posts})
 
         }catch(error){
-            return res.status(StatusCodes.UNAUTHORIZED).redirect('/')
+            return res.redirect('/')
         }
 
     }

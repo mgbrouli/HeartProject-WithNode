@@ -117,19 +117,7 @@
 
 /**************Container central da pagina***************/
 
-.container_port{
-    width: 95%;
-    height: 250px;
-    background-color: var(--navigation);
-    border-top-right-radius: 10vh;
-    border-bottom-left-radius: 20px;
-    display: flex;
-    flex-direction: row;    
-    overflow: scroll ;
-    align-items: center;
-    border: 3px dashed var(--transparent);
 
-}
 .container_port .lojas{
     width: 158px;
     min-width: 157px;
@@ -144,26 +132,7 @@
 
 /***************POST CONTAINER **************/
 
-.container_posts{
-    width: 85%;
-    height: 500px;
-    padding: 20px;
-    border: 3px solid var(--transparent);
-    background-color: lightgray;
-    margin: 20px;
-    overflow: auto;
 
-}
-.post_elements{
-    width: 90%;
-    height: 90px;
-    min-height: 89px;
-    background-color: rgb(225, 225, 225);
-    display: flex;
-    margin: 20px;
-    padding: 5px;
-
-}
 .post_foto{
     width: 80px;
     min-width: 80px;

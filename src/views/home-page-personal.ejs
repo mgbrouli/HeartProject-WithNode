@@ -80,37 +80,59 @@
 
 
             </div><!--contanier-port-->
-            <div class="container_posts">
+            <div class="w-10/12 h-full p-5 border-2 border-black/20 bg-gray-200 m-5 overflow-auto">
 
                 <div class="w-full min-h-60 flex items-center justify-center bg-amber-300"><!--Criação de novo post-->
-                    <form action="" method="post" class=" flex flex-col items-center w-full h-full">
-                        <textarea name="" id="" class="border rounded-md border-gray-400 bg-amber-50 w-10/12 min-h-29 resize-none p-3.5"></textarea>
+                    <form action="/post/criate" method="post" class=" flex flex-col items-center w-full h-full">
+                        <textarea name="text" id=""
+                            class="border rounded-md border-gray-400 bg-amber-50 w-10/12 min-h-29 resize-none p-3.5"></textarea>
                         <div class="w-10/12 h-6 items-start p-1.5">
-                            <button type="submit" class="border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:italic hover:font-bold hover:text-orange-200 active:bg-zinc-900 active:text-white w-20 h-7.5 rounded-md bg-emerald-300">Postar</button>
+                            <button type="submit"
+                                class="border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:italic hover:font-bold hover:text-orange-200 active:bg-zinc-900 active:text-white w-20 h-7.5 rounded-md bg-emerald-300">Postar</button>
                         </div>
-                        
+
                     </form>
 
                 </div><!--Criação de novo post-->
 
-                <% for (let i=0; i < 10; i++) { %>
-                    <div class="post_elements">
+                <% posts.forEach( post=> { %>
+                    <div class="w-[90%] min-h-20 rounded-2xl border border-zinc-600/30 bg-zinc-400 flex m-5 p-1.5">
                         <div class="post_foto"></div><!--post_foto-->
 
 
 
-                        <div class="post_conteudo">
-                            <div class="post_perfil">Nome da Empresa ou pessoa</div><!--post_perfil-->
+                        <div class="font-normal font-sans text-black p-1 text-[13px] ">
+                            <div class="post_perfil">
+                                <%= user.name %>
+                            </div><!--post_perfil-->
+                            <p class=" m-1.5 p-1.5 rounded-2xl bg-zinc-200 whitespace-pre-line">
+                                <%= post.text %>
+                            </p>
+                            
 
-                            Mussum Ipsum, cacilds vidis litro abertis.
-                            Sapien in monti palavris qui num significa nadis i pareci latim.
-                            In elementis mé pra quem é amistosis quis leo.
-                            Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis,
-                            aguis e fermentis. Negão é teu passadis, eu sou faxa pretis.
+                                <div class="w-full flex flex-row gap-5"><!--Area de curtidas e elemntos do tipo -->
+                                    <button class=" flex flex-row gap-1 items-center justify-center w-25 h-6.25 rounded-md bg-emerald-300 border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:font-extralight hover:text-orange-200 active:bg-zinc-900 active:text-white">
+                                        <span>Curtidas</span>
+                                        <i class="fi fi-rr-social-network"></i>
+                                        <span>
+                                            <%= post.curtidas %>
+                                        </span>
+                                    </button>
+                                    <button class=" flex flex-row gap-1 items-center justify-center w-25 h-6.25 rounded-md bg-emerald-300 border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:font-extralight hover:text-orange-200 active:bg-zinc-900 active:text-white">
+                                        <span>Amei</span>
+                                        <i class="fi fi-rs-hand-holding-heart"></i>
+                                        <span>
+                                            <%= post.amei %>
+                                        </span>
+                                    </button>
+
+
+
+                                </div><!--fim da area de curtida-->
                         </div><!--conteudo-->
                     </div><!--post_elements-->
 
-                    <% } %>
+                    <% }) %>
 
 
             </div><!--container_posts-->

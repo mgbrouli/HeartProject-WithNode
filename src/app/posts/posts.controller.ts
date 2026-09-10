@@ -26,4 +26,5 @@ export class PostsControllers{
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).redirect('/home')
     }
     }
+
 }

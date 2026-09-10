@@ -7,6 +7,7 @@ const __dirname = import.meta.dirname;
 import { userRouter } from './app/auth/user.routers.js';
 import { authMiddleWare } from './core/utilities/jwtMiddleware.js'
 import { homeRouter } from './app/home/home.routers.js';
+import { postRouter } from './app/posts/posts.routers.js';
 
 
 //const db = require("./db")
@@ -20,8 +21,13 @@ app.use(cookieParser())
 app.use(express.static('src/views'))
 app.use(express.urlencoded({extended:true}))
 
-app.use('/api', userRouter)
-app.use('/', homeRouter)
+//Auth para cadastrar e logar
+app.use('/api', userRouter);
+app.use('/', homeRouter);
+
+//Rotas parar posts
+app.use('/', postRouter);
+
 
 //Routes of rendering pages
 

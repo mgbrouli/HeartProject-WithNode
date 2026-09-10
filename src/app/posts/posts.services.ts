@@ -20,8 +20,14 @@ export class PostsServices{
     }
 
     getAllPost = async () =>{
-        const posts = await db.select().from(postTable)
+        try{
 
+        
+        const posts = await db.select().from(postTable)
         return posts
+        }catch(error){
+            console.error("Erro ao buscar posts: " + error);
+            throw error;
+        }
     }
 }
