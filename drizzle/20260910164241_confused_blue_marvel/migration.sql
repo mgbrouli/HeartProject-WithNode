@@ -10,16 +10,23 @@ CREATE TABLE `users_table` (
 );
 --> statement-breakpoint
 CREATE TABLE `comentarios` (
-	`id` int unsigned AUTO_INCREMENT PRIMARY KEY,
-	`post_id` int unsigned NOT NULL,
+	`id` varchar(36) PRIMARY KEY,
+	`post_id` varchar(56) NOT NULL,
 	`user_id` int unsigned NOT NULL,
 	`text` text NOT NULL,
 	`curtidas` int NOT NULL DEFAULT 0,
 	`amei` int NOT NULL DEFAULT 0
 );
 --> statement-breakpoint
+CREATE TABLE `post_reactions` (
+	`id` varchar(36) PRIMARY KEY,
+	`post_id` varchar(36) NOT NULL,
+	`user_id` int unsigned NOT NULL,
+	`type` text NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE `post_table` (
-	`id` int unsigned AUTO_INCREMENT PRIMARY KEY,
+	`id` varchar(36) PRIMARY KEY,
 	`user_id` int unsigned NOT NULL,
 	`posts` text NOT NULL,
 	`curtidas` int NOT NULL DEFAULT 0,

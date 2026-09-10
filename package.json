@@ -23,7 +23,8 @@
     "jsonwebtoken": "^9.0.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.24.3",
-    "spress": "^0.1.2"
+    "spress": "^0.1.2",
+    "uuidv7": "^1.2.1"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.10",

@@ -6,4 +6,5 @@ export const postRouter = Router()
 const postController = new PostsControllers();
 
 
-postRouter.post("/post/criate", authMiddleWare, postController.create )
+postRouter.post("/post/create", authMiddleWare, postController.create )
+postRouter.post('/post/:postId/react', authMiddleWare, postController.toggleReaction)

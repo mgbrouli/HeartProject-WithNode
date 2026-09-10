@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "mysql",
-  "id": "9a77aa19-e278-4826-8221-be136c3e3e6f",
+  "id": "f11b7899-d1f9-43f2-a1a1-94802839e17b",
   "prevIds": [
     "00000000-0000-0000-0000-000000000000"
   ],
@@ -12,6 +12,10 @@
     },
     {
       "name": "comentarios",
+      "entityType": "tables"
+    },
+    {
+      "name": "post_reactions",
       "entityType": "tables"
     },
     {
@@ -117,9 +121,9 @@
       "table": "users_table"
     },
     {
-      "type": "int unsigned",
+      "type": "varchar(36)",
       "notNull": true,
-      "autoIncrement": true,
+      "autoIncrement": false,
       "default": null,
       "onUpdateNow": false,
       "onUpdateNowFsp": null,
@@ -131,7 +135,7 @@
       "table": "comentarios"
     },
     {
-      "type": "int unsigned",
+      "type": "varchar(56)",
       "notNull": true,
       "autoIncrement": false,
       "default": null,
@@ -201,9 +205,65 @@
       "table": "comentarios"
     },
     {
+      "type": "varchar(36)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "post_reactions"
+    },
+    {
+      "type": "varchar(36)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "post_id",
+      "entityType": "columns",
+      "table": "post_reactions"
+    },
+    {
       "type": "int unsigned",
       "notNull": true,
-      "autoIncrement": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "post_reactions"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "type",
+      "entityType": "columns",
+      "table": "post_reactions"
+    },
+    {
+      "type": "varchar(36)",
+      "notNull": true,
+      "autoIncrement": false,
       "default": null,
       "onUpdateNow": false,
       "onUpdateNowFsp": null,
@@ -284,6 +344,14 @@
       ],
       "name": "PRIMARY",
       "table": "comentarios",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "post_reactions",
       "entityType": "pks"
     },
     {

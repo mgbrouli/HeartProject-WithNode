@@ -40,7 +40,7 @@ export class UserController {
                 maxAge: EIGHT_HOURS_IN_MS
             })
             
-            res.status(StatusCodes.PERMANENT_REDIRECT).redirect('/home')
+            res.redirect('/home')
 
         }catch(error: any){
             if(error instanceof AppError){

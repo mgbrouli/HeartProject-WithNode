@@ -80,20 +80,19 @@
 
 
             </div><!--contanier-port-->
+            <div class="w-full min-h-60 flex items-center justify-center bg-amber-300"><!--Criação de novo post-->
+                <form action="/post/create" method="post" class=" flex flex-col items-center w-full h-full">
+                    <textarea name="text" id=""
+                        class="border rounded-md border-gray-400 bg-amber-50 w-10/12 min-h-29 resize-none p-3.5"></textarea>
+                    <div class="w-10/12 h-6 items-start p-1.5">
+                        <button type="submit"
+                            class="border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:italic hover:font-bold hover:text-orange-200 active:bg-zinc-900 active:text-white w-20 h-7.5 rounded-md bg-emerald-300">Postar</button>
+                    </div>
+
+                </form>
+
+            </div><!--Criação de novo post-->
             <div class="w-10/12 h-full p-5 border-2 border-black/20 bg-gray-200 m-5 overflow-auto">
-
-                <div class="w-full min-h-60 flex items-center justify-center bg-amber-300"><!--Criação de novo post-->
-                    <form action="/post/criate" method="post" class=" flex flex-col items-center w-full h-full">
-                        <textarea name="text" id=""
-                            class="border rounded-md border-gray-400 bg-amber-50 w-10/12 min-h-29 resize-none p-3.5"></textarea>
-                        <div class="w-10/12 h-6 items-start p-1.5">
-                            <button type="submit"
-                                class="border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:italic hover:font-bold hover:text-orange-200 active:bg-zinc-900 active:text-white w-20 h-7.5 rounded-md bg-emerald-300">Postar</button>
-                        </div>
-
-                    </form>
-
-                </div><!--Criação de novo post-->
 
                 <% posts.forEach( post=> { %>
                     <div class="w-[90%] min-h-20 rounded-2xl border border-zinc-600/30 bg-zinc-400 flex m-5 p-1.5">
@@ -108,27 +107,35 @@
                             <p class=" m-1.5 p-1.5 rounded-2xl bg-zinc-200 whitespace-pre-line">
                                 <%= post.text %>
                             </p>
-                            
 
-                                <div class="w-full flex flex-row gap-5"><!--Area de curtidas e elemntos do tipo -->
-                                    <button class=" flex flex-row gap-1 items-center justify-center w-25 h-6.25 rounded-md bg-emerald-300 border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:font-extralight hover:text-orange-200 active:bg-zinc-900 active:text-white">
-                                        <span>Curtidas</span>
-                                        <i class="fi fi-rr-social-network"></i>
-                                        <span>
-                                            <%= post.curtidas %>
-                                        </span>
-                                    </button>
-                                    <button class=" flex flex-row gap-1 items-center justify-center w-25 h-6.25 rounded-md bg-emerald-300 border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:font-extralight hover:text-orange-200 active:bg-zinc-900 active:text-white">
-                                        <span>Amei</span>
-                                        <i class="fi fi-rs-hand-holding-heart"></i>
-                                        <span>
-                                            <%= post.amei %>
-                                        </span>
+
+                            <div class="w-full flex flex-row gap-5" data-post-id="<%= post.id %>">
+                                <!--Area de curtidas e elemntos do tipo -->
+                                <% const isCurtida=post.userReaction==='curtida' ; const
+                                    isAmei=post.userReaction==='amei' ; %>
+
+                                    <button data-type="curtida"
+                                        class="btn-reaction transition-colors <%= isCurtida ? 'bg-blue-600 text-white' : 'bg-emerald-300 text-black' %> flex flex-row gap-1 items-center justify-center w-25 h-6.25 rounded-md border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:text-orange-200 active:bg-zinc-900 active:text-white">
+                                    <span>Curtidas</span>
+                                    <i class="fi fi-rr-social-network"></i>
+                                    <span class="count-curtidas">
+                                        <%= post.curtidas %>
+                                    </span>
                                     </button>
 
 
+                                    <button data-type="amei"
+                                        class="btn-reaction transition-colors <%= isAmei ? 'bg-red-600 text-white' : 'bg-emerald-300 text-black' %> flex flex-row gap-1 items-center justify-center w-25 h-6.25 rounded-md border border-zinc-300 shadow shadow-black/50 hover:shadow-green-500/50 hover:bg-purple-400 hover:text-orange-200 active:bg-zinc-900 active:text-white">
+                                    <span>Amei</span>
+                                    <i class="fi fi-rs-hand-holding-heart"></i>
+                                    <span class="count_amei">
+                                        <%= post.amei %>
+                                    </span>
+                                    </button>
 
-                                </div><!--fim da area de curtida-->
+
+
+                            </div><!--fim da area de curtida-->
                         </div><!--conteudo-->
                     </div><!--post_elements-->
 
@@ -145,6 +152,64 @@
         &copy; 2026 Direitos reservados Magnum Brouli
     </footer>
     </div><!--container-->
+
+    <script>
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const reactionButton = document.querySelectorAll('.btn-reaction');
+
+            reactionButton.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const currentButton = e.currentTarget;
+                    const container = currentButton.closest('[data-post-id]');
+                    const postId = container.dataset.postId;
+                    const type = currentButton.dataset.type;
+
+                    try {
+                        const response = await fetch(`/post/${postId}/react`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            credentials: 'include', // Envia os cookies/sessão de autenticação
+
+                            body: JSON.stringify({ type })
+                        });
+                        if (!response.ok) {
+                            throw new Error('Erro ao processar reação.');
+                        }
+
+                        const data = await response.json();
+
+                        container.querySelector('.count-curtidas').textContent = data.curtidas;
+                        container.querySelector('.count-amei').textContent = data.amei;
+
+                        const curtidaBtn = container.querySelector('[data-type="curtida"]');
+                        const ameiBtn = container.querySelector('[data-type="amei"]');
+
+                        [curtidaBtn, ameiBtn].forEach(btn => {
+                            btn.classList.remove('bg-blue-600', 'bg-red-600', 'text-white');
+                            btn.classList.add('bg-gray-200', 'text-gray-700');
+                        });
+
+                        if (data.action !== 'removed') {
+                            if (data.type === 'curtida') {
+                                curtidaBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                                curtidaBtn.classList.add('bg-blue-600', 'text-white');
+                            } else if (data.type === 'amei') {
+                                ameiBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                                ameiBtn.classList.add('bg-red-600', 'text-white');
+                            }
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        alert('Você precisa estar logado para interagir.');
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>

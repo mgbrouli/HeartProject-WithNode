@@ -8,35 +8,43 @@ import { PostsServices } from "../posts/posts.services.js";
 const homeService = new HomeServices();
 const postService = new PostsServices();
 
-export class HomeControllers{
+export class HomeControllers {
 
 
-    getHome = async (req: Request, res: Response) =>{
-        try{
+    getHome = async (req: Request, res: Response) => {
+        try {
             const userId = Number(req.user?.userId);
-            if(!userId || Number.isNaN(userId)){
+            if (!userId || Number.isNaN(userId)) {
                 return res.redirect("/")
+                //return res.status(StatusCodes.UNAUTHORIZED).json({message: "Erro ao se conectar"})
             }
 
             //OBS: Aqui a baixo fazer o retorno dos posts para jogar no redirect
             //Jogar em formato de Json apos o redirect de posts e coisa afins
             const userData = await homeService.findUserById(userId);
-
-            if(!userData){
-                res.clearCookie('token');
-                return res.redirect('/');
-            }
-
             const posts = await postService.getAllPost();
+            const userReactions = await postService.getReactionsByUserId(userId) ?? [];
 
-            if(!userData){
+
+            if (!userData) {
                 res.clearCookie('token');
+
                 return res.redirect('/');
+                //return res.status(StatusCodes.UNAUTHORIZED).json({message: "Erro ao se conectar"})
             }
 
-            return res.render('home-page-personal', {user: userData, posts})
+            const postComReacao = posts.map(post => {
+                const reacaoDoUsuario = userReactions.find(r => r.postId === post.id);
 
-        }catch(error){
+                return {
+                    ...post,
+                    userReaction: reacaoDoUsuario ? reacaoDoUsuario.type : null
+                };
+            });
+
+            return res.render('home-page-personal', { user: userData, posts: postComReacao })
+
+        } catch (error) {
             return res.redirect('/')
         }
 
